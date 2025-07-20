@@ -93,6 +93,7 @@ class OfficialDataExporter {
 					...localizedPersonality,
 					title: localizedPersonality.title,
 					titleRaw: rawPersonality.title,
+					nameRaw: rawPersonality.name,
 				};
 				personalitiesData.push(newPersonality);
 			} else {

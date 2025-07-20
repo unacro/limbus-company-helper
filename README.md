@@ -13,3 +13,10 @@ $ bun sync
 ```
 https://cdn.jsdelivr.net/gh/unacro/limbus-company-helper@main/data/personalities.json
 ```
+
+## Todo
+
+- [x] 镜牢规划模块
+- [x] 经验采光规划模块
+- [ ] 纺锤采光规划模块
+- [ ] 逆向 Team Code（编队码）算法，~~冗余拉满的 base64~~

@@ -4,9 +4,10 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"dev": "bun run src/index.ts",
-		"start": "bun run src/index.ts",
-		"sync": "bun run src/index.ts"
+		"dev": "bun run src/index.ts debug",
+		"test": "bun test --watch",
+		"start": "bun run src/index.ts start",
+		"sync": "bun run src/index.ts sync"
 	},
 	"devDependencies": {
 		"@types/bun": "latest"

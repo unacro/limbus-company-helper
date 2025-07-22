@@ -1,6 +1,6 @@
 import utils from "./utils";
 
-type SupportedLanguage = "en" | "zhcn";
+type SupportedLanguage = "en" | "zh_cn";
 type PersonalityObject = {
 	id: number;
 	title: string;
@@ -9,14 +9,23 @@ type PersonalityObject = {
 	nameWithTitle: string;
 	desc: string;
 };
+type EgoObject = {
+	id: number;
+	name: string;
+	nameRaw: string;
+	desc: string;
+	descRaw: string;
+};
 
 class OfficialDataExporter {
 	#gameInstalledPath: string;
 	personalitiesData: PersonalityObject[];
+	egosData: EgoObject[];
 
 	constructor(steamPath: string) {
 		this.#gameInstalledPath = `${steamPath}/steamapps/common/Limbus Company/`;
 		this.personalitiesData = [];
+		this.egosData = [];
 	}
 
 	get #enLangPath() {
@@ -32,59 +41,123 @@ class OfficialDataExporter {
 		return `${this.#gameInstalledPath}/LimbusCompany_Data/Lang/LLC_zh-CN`;
 	}
 
-	#getPersonalitiesFilepath(lang: SupportedLanguage = "en") {
-		const personalities: Record<SupportedLanguage, string> = {
-			en: `${this.#enLangPath}/EN_Personalities.json`,
-			zhcn: `${this.#zhcnLangPath}/Personalities.json`,
+	#getLocalDataFilepath(
+		lang: SupportedLanguage = "en",
+		targetData: "personality" | "ego",
+	) {
+		const fileType = targetData === "ego" ? "Egos" : "Personalities";
+		const filepath: Record<SupportedLanguage, string> = {
+			en: `${this.#enLangPath}/EN_${fileType}.json`,
+			zh_cn: `${this.#zhcnLangPath}/${fileType}.json`,
 		};
-		return personalities[lang];
+		return filepath[lang];
 	}
 
 	async export() {
-		if (!this.personalitiesData) {
-			throw new Error("Personalities data not initialized");
+		if (!this.personalitiesData || !this.egosData) {
+			throw new Error("Data not initialized");
 		}
-		const path = Bun.file("./data/personalities.json");
-		return await Bun.write(path, JSON.stringify(this.personalitiesData));
+		const filepaths = {
+			personalities: Bun.file("./data/personalities.json"),
+			egos: Bun.file("./data/egos.json"),
+		};
+		const results = [];
+		results.push(
+			await Bun.write(
+				filepaths.personalities,
+				JSON.stringify(this.personalitiesData),
+			),
+		);
+		results.push(
+			await Bun.write(filepaths.egos, JSON.stringify(this.egosData)),
+		);
+		return !results.some((success) => !success); // [].every(Boolean) === true
 	}
 
-	async init() {
-		const { dataList: personalitiesRawData } = await utils.readJsonFile(
-			this.#getPersonalitiesFilepath("en"),
+	async #mergeData(dataType: "personality" | "ego") {
+		const dataList = [];
+		const { dataList: rawData } = await utils.readJsonFile(
+			this.#getLocalDataFilepath("en", dataType),
 		);
-		const { dataList: personalitiesLocalizedData } = await utils.readJsonFile(
-			this.#getPersonalitiesFilepath("zhcn"),
+		const { dataList: localizedData } = await utils.readJsonFile(
+			this.#getLocalDataFilepath("zh_cn", dataType),
 		);
-		for (const readResult of [
-			personalitiesRawData,
-			personalitiesLocalizedData,
-		]) {
-			if (!utils.isValidArray(readResult)) {
+		dataList.push(rawData, localizedData);
+		for (const loadResult of dataList) {
+			if (!utils.isValidArray(loadResult)) {
 				return false;
 			}
 		}
-		const personalitiesData: PersonalityObject[] = [];
-		for (const rawPersonality of personalitiesRawData) {
-			const localizedPersonality = personalitiesLocalizedData.find(
-				(personality: PersonalityObject) =>
-					personality.id === rawPersonality.id,
-			);
-			if (localizedPersonality) {
-				const newPersonality: PersonalityObject = {
-					...localizedPersonality,
-					title: localizedPersonality.title,
-					titleRaw: rawPersonality.title,
-					nameRaw: rawPersonality.name,
-				};
-				personalitiesData.push(newPersonality);
-			} else {
-				console.warn(
-					"指定人格未找到本地化数据 检查是否安装了最新汉化",
-					rawPersonality,
-				);
+		switch (dataType) {
+			case "personality": {
+				const personalitiesData: PersonalityObject[] = [];
+				for (const rawPersonality of dataList[0]) {
+					const localizedPersonality = dataList[1].find(
+						(personality: PersonalityObject) =>
+							personality.id === rawPersonality.id,
+					);
+					if (localizedPersonality) {
+						const newPersonality: PersonalityObject = {
+							...localizedPersonality,
+							title: localizedPersonality.title,
+							titleRaw: rawPersonality.title,
+							nameRaw: rawPersonality.name,
+						};
+						personalitiesData.push(newPersonality);
+					} else {
+						console.warn(
+							"指定人格未找到本地化数据 检查是否安装了最新汉化",
+							rawPersonality,
+						);
+						return false;
+					}
+				}
+				this.personalitiesData = personalitiesData;
+				break;
+			}
+
+			case "ego": {
+				const egosData: EgoObject[] = [];
+				for (const rawEgo of dataList[0]) {
+					const localizedEgo = dataList[1].find(
+						(ego: EgoObject) => ego.id === rawEgo.id,
+					);
+					if (localizedEgo) {
+						const newEgo: EgoObject = {
+							...localizedEgo,
+							nameRaw: rawEgo.name,
+							descRaw: rawEgo.desc,
+						};
+						egosData.push(newEgo);
+					} else {
+						console.warn(
+							"指定 E.G.O 未找到本地化数据 检查是否安装了最新汉化",
+							rawEgo,
+						);
+						return false;
+					}
+				}
+				this.egosData = egosData;
+				break;
+			}
+
+			default: {
+				break;
 			}
 		}
-		this.personalitiesData = personalitiesData;
+		return true;
+	}
+
+	async init() {
+		const allTaskSuccess = (
+			await Promise.all([
+				this.#mergeData("personality"),
+				this.#mergeData("ego"),
+			])
+		).every(Boolean);
+		if (!allTaskSuccess) {
+			return false;
+		}
 		return await this.export();
 	}
 
@@ -122,6 +195,7 @@ class OfficialDataExporter {
 				};
 			},
 		);
+		console.table(this.egosData);
 		console.table(personalities);
 	}
 }

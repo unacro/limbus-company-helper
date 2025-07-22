@@ -1,6 +1,6 @@
-import LimbusCompanyCalculator from "./calculator";
-import NotionClient from "./notion";
-import OfficialDataExporter from "./official-data-exporter";
+import LimbusCompanyCalculator from "./core/enkephalin-calculator";
+import OfficialDataExporter from "./core/official-data-exporter";
+import NotionClient from "./third-party/notion";
 
 async function syncNotion(dataExporter: OfficialDataExporter) {
 	const notion = new NotionClient({

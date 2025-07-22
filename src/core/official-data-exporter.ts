@@ -1,23 +1,4 @@
-function isValidArray<T>(
-	targetArray: T[] | null | undefined,
-): targetArray is T[] {
-	return !!targetArray && Array.isArray(targetArray) && targetArray.length > 0;
-}
-
-async function readJsonFile(filepath: string) {
-	const file = Bun.file(filepath);
-	// 提前检查 否则即便使用 try-catch 也捕获不到文件不存在的 **同步错误**
-	if (!(await file.exists())) {
-		console.error(`File not found: ${filepath}\n`);
-		return {};
-	}
-	try {
-		return await file.json();
-	} catch (error) {
-		console.error(error);
-	}
-	return {};
-}
+import utils from "./utils";
 
 type SupportedLanguage = "en" | "zhcn";
 type PersonalityObject = {
@@ -68,17 +49,17 @@ class OfficialDataExporter {
 	}
 
 	async init() {
-		const { dataList: personalitiesRawData } = await readJsonFile(
+		const { dataList: personalitiesRawData } = await utils.readJsonFile(
 			this.#getPersonalitiesFilepath("en"),
 		);
-		const { dataList: personalitiesLocalizedData } = await readJsonFile(
+		const { dataList: personalitiesLocalizedData } = await utils.readJsonFile(
 			this.#getPersonalitiesFilepath("zhcn"),
 		);
 		for (const readResult of [
 			personalitiesRawData,
 			personalitiesLocalizedData,
 		]) {
-			if (!isValidArray(readResult)) {
+			if (!utils.isValidArray(readResult)) {
 				return false;
 			}
 		}

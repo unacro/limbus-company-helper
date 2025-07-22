@@ -4,7 +4,8 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"dev": "bun run src/index.ts debug",
+		"dev": "bun run src/index.ts dev",
+		"debug": "bun build src/team-code-debugger.ts --outdir ./dist --watch",
 		"test": "bun test --watch",
 		"start": "bun run src/index.ts start",
 		"sync": "bun run src/index.ts sync"

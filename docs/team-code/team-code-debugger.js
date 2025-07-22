@@ -9,14 +9,6 @@ var sampleList = [
     code: "H4sIAAAAAAAACnMOdEx3BAInR2cQ5ejq6AmmqSLsaGsLABXXti1gAAAA"
   },
   {
-    description: "编队 1 2 3 4 5 6",
-    code: "H4sIAAAAAAAACnMMckx3BAInT2cQ5eha7gmmQ6HCoRBht3SIcCBU2BGq2hGvsKOtLQB7yDA5YAAAAA=="
-  },
-  {
-    description: "编队 2 1 4 3 6 5",
-    code: "H4sIAAAAAAAACnMMdkx3BAInV2cQ5ejm6AmmQ6DCkVDhQIhwIFTYESLs6ohX2NHWFgANTYsWYAAAAA=="
-  },
-  {
     description: "10206 七浮",
     code: "H4sIAAAAAAAACnMMdEx3BAJ3R2cQ5ejq6AmmocJOFAk72toCAOyka5tgAAAA"
   },
@@ -35,6 +27,14 @@ var sampleList = [
   {
     description: "液囊",
     code: "H4sIAAAAAAAACnMMdEx3BAInR2cgdnR0dfQEcR2RhB3JFna0tQUAgSvOpmAAAAA="
+  },
+  {
+    description: "编队 6 5 4 3 2 1",
+    code: "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmcQiHQ4VDIcJuUOEQqLAnVHUgRNjR1hYA0b5FAWAAAAA="
+  },
+  {
+    description: "编队 5 6 3 4 1 2",
+    code: "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmcQiHQYUjocLlEOFQqLArVDgdIuxoawsAzf1VQWAAAAA="
   },
   {
     description: "液囊 + 另一个EGO",

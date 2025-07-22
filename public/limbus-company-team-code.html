@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>逆向《边狱巴士》编队码算法</title>
+	<link rel="preload" as="style" crossorigin href="https://fontsapi.zeoseven.com/442/main/result.css"
+		onload="this.rel='stylesheet'" onerror="this.href='https://fontsapi-storage.zeoseven.com/442/main/result.css'" />
+	<noscript>
+		<link rel="stylesheet" href="https://fontsapi.zeoseven.com/442/main/result.css" />
+	</noscript>
+	<style>
+		:root {
+			--color-primary: #424242;
+			--color-secondary: #f5f5f5;
+			--color-tertiary: #cfd8dc;
+			--color-accent: #0d47a1;
+			--color-highlight: #b71c1c;
+			--color-ignore: #bcaaa4;
+			--color-ignore-2: #b0bec5;
+			--default-mono-font: "Maple Mono NF CN", 'Courier New', Courier, monospace;
+			font-weight: normal;
+			font-size: 16px;
+		}
+
+		body {
+			font-size: 1.4rem;
+			color: var(--color-primary);
+		}
+
+		pre,
+		code {
+			margin: 0;
+			font-family: var(--default-mono-font);
+		}
+
+
+		[data-button] {
+			color: var(--color-accent);
+		}
+
+		[data-field-type="identity"] {
+			text-decoration: underline;
+		}
+
+		[data-field-type="ego"] {
+			font-style: italic;
+		}
+
+		[data-field-type="redundant"] {
+			color: var(--color-ignore);
+		}
+
+		[data-field-type="end"] {
+			color: var(--color-ignore-2);
+		}
+
+		.highlight,
+		[data-field-modified="true"] {
+			color: var(--color-highlight);
+		}
+
+		.display-hint {
+			display: inline;
+			color: var(--color-tertiary);
+		}
+
+		.display-remark {
+			position: absolute;
+			margin-left: -1em;
+		}
+
+		#app {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 1rem;
+			height: 97vh;
+		}
+
+		#team-code-container {
+			padding: 1rem;
+			background-color: var(--color-secondary);
+
+			div.lc-team:nth-child(odd) {
+				background-color: var(--color-tertiary);
+			}
+
+			[data-button="copyTeamCode"] {
+				cursor: pointer;
+			}
+
+			[data-button="copyTeamCode"]:hover {
+				filter: brightness(1.5);
+			}
+
+			[data-button="copyTeamCode"]:active {
+				filter: brightness(0.6);
+			}
+
+			[data-field-type="identity"] {
+				cursor: help;
+			}
+
+			[data-field-modified="true"] {
+				cursor: cell;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<div id="team-code-parser">
+			<input type="text" id="team-code-input" placeholder="请输入编队码" />
+			<button type="button">解析</button>
+		</div>
+		<div id="difference-display">
+			点击<span class="highlight">红色差异</span>显示详情<br>
+			点击<span data-button="example">蓝色编号</span>复制编队码
+		</div>
+		<div id="team-code-container"></div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/pako@latest/dist/pako.min.js"></script>
+	<script src="./team-code-debugger.js" defer></script>
+</body>
+
+</html>

@@ -129,7 +129,7 @@ type UserConfig = {
 	egoshards: Map<number, EgoshardsRecord>;
 };
 
-class LimbusCompanyCalculator {
+class EnkephalinCalculator {
 	#userConfig: UserConfig;
 
 	constructor() {
@@ -260,4 +260,4 @@ class LimbusCompanyCalculator {
 	}
 }
 
-export default LimbusCompanyCalculator;
+export default EnkephalinCalculator;

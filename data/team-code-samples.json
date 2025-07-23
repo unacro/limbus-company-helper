@@ -1,40 +1,62 @@
 {
-	"sampleList": [
+	"personalities": [
 		{
-			"description": "10107 裴廓德号 大副",
-			"code": "H4sIAAAAAAAACnMqd0x3BAInR2cQ5ejq6AmmA6kh7GhrCwA1VNYGYAAAAA=="
+			"description": "第 1 人格",
+			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmqSLsaGsLANDKykhgAAAA"
 		},
 		{
-			"description": "10109 环箱",
-			"code": "H4sIAAAAAAAACnMOdEx3BAInR2cQ5ejq6AmmqSLsaGsLABXXti1gAAAA"
+			"description": "第 2 人格",
+			"code": "H4sIAAAAAAAAA3NMd0x3BAJnIAQBTyAEAaoIO9raAgDjhr3IYAAAAA=="
 		},
 		{
-			"description": "10206 七浮",
-			"code": "H4sIAAAAAAAACnMMdEx3BAJ3R2cQ5ejq6AmmocJOFAk72toCAOyka5tgAAAA"
+			"description": "第 3 人格",
+			"code": "H4sIAAAAAAAAA3Msd0x3BAIXR2cQ5ejr6AmmqSLsaGsLAE5TFSlgAAAA"
 		},
 		{
-			"description": "10210 裂纹浮",
-			"code": "H4sIAAAAAAAACnMMdEx3BAJvR2cQ5ejq6AmmocJOFAk72toCAMLItsxgAAAA"
+			"description": "第 4 人格",
+			"code": "H4sIAAAAAAAAA3NydEx3BAJXR2cQ5Rjo6AminKgh7OhoawsAwBYf92AAAAA="
 		},
 		{
-			"description": "10211 火浮",
-			"code": "H4sIAAAAAAAACnMMdEx3BAIfR2cQ5ejq6AmmocJOFAk72toCAMw2nbBgAAAA"
+			"description": "第 5 人格",
+			"code": "H4sIAAAAAAAAA3MKdEx3BAI3R2cQ5Rjq6AminKgh7OhoawsAirD0/GAAAAA="
 		},
 		{
-			"description": "10212 兔头",
-			"code": "H4sIAAAAAAAACnMMdEx3BAJfR2cQ5ejq6AmmocJOFAk72toCANV+WOdgAAAA"
+			"description": "第 6 人格",
+			"code": "H4sIAAAAAAAAA3NKd0x3BAJ3R2cQ5Rjp6AminKgh7OhoawsAufyDfGAAAAA="
 		},
+		{
+			"description": "第 7 人格",
+			"code": "H4sIAAAAAAAAA3Mqd0x3BAIPR2cQ5Zjs6AminKgh7OhoawsAv+xMRGAAAAA="
+		},
+		{
+			"description": "第 8 人格",
+			"code": "H4sIAAAAAAAAA3N2dEx3BAJPR2cQBeR4gihnagg7OtraAgDMToZnYAAAAA=="
+		},
+		{
+			"description": "第 9 人格",
+			"code": "H4sIAAAAAAAAA3MOdEx3BAIvR2cQ5Zjt6AminKkh7OhoawsAutWnDWAAAAA="
+		},
+		{
+			"description": "第 10 人格",
+			"code": "H4sIAAAAAAAAA3NOd0x3BAJvR2cQ5Zjv6AminKkh7OhoawsAtaQa7GAAAAA="
+		},
+		{
+			"description": "第 11 人格",
+			"code": "H4sIAAAAAAAAA3Mud0x3BAIfR2cQ5Vjs6AminKkh7OhoawsAXDbsr2AAAAA="
+		},
+		{
+			"description": "第 12 人格",
+			"code": "H4sIAAAAAAAAA3NxdEx3BAJfR2cQ5Vju6AmiXKgh7OhoawsA5HWFbGAAAAA="
+		},
+		{
+			"description": "第 13 人格",
+			"code": "H4sIAAAAAAAAA3MJdEx3BAI/R2cQ5Wjg6AmiXKgh7OhoawsABH0uJmAAAAA="
+		}
+	],
+	"egos": [
 		{
 			"description": "液囊",
 			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cgdnR0dfQEcR2RhB3JFna0tQUAgSvOpmAAAAA="
-		},
-		{
-			"description": "编队 6 5 4 3 2 1",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmcQiHQ4VDIcJuUOEQqLAnVHUgRNjR1hYA0b5FAWAAAAA="
-		},
-		{
-			"description": "编队 5 6 3 4 1 2",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmcQiHQYUjocLlEOFQqLArVDgdIuxoawsAzf1VQWAAAAA="
 		},
 		{
 			"description": "液囊 + 另一个EGO",
@@ -43,66 +65,20 @@
 		{
 			"description": "小唐 3 EGO",
 			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6OkY6OHoiEUYBEgTdrS1BQAMFrCyYAAAAA=="
+		}
+	],
+	"order": [
+		{
+			"description": "123 456 789 abc",
+			"code": "H4sIAAAAAAAACnMMckx3BAInT2cQ5eha7gmmQ6HCoRBht3SIcARUOB0i7B4IEU6EChdDhD0cIcKOtrYA+Btit2AAAAA="
 		},
 		{
-			"description": "10310 血魔唐",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5Zjv6Amm0YRdyRJ2tLUFAHA0qKNgAAAA"
+			"description": "234 567 89a bc1",
+			"code": "H4sIAAAAAAAACnMMdkx3BAInX2cQ5ejm6Ammw6DCkVDhcohwJFQ4GyLsng4RToIKl0OEXQMhwo62tgClumSfYAAAAA=="
 		},
 		{
-			"description": "10312 憎恶唐",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5Vju6Amm0YRdyRJ2tLUFAMlznFtgAAAA"
-		},
-		{
-			"description": "10410 蜘蛛良",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AminNOxCjtiV41L2NHWFgBktKbVYAAAAA=="
-		},
-		{
-			"description": "10411 卯兔良",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AminMuxCjtiV41L2NHWFgCqqr01YAAAAA=="
-		},
-		{
-			"description": "10511 五默",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmocI+2IVxqEYXdrS1BQCwqiEgYAAAAA=="
-		},
-		{
-			"description": "10512 雷横",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmocK+2IVxqEYXdrS1BQBW+MugYAAAAA=="
-		},
-		{
-			"description": "10611 句点宝",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6Amm0YSLsQvjUA0TdrS1BQCLR1DpYAAAAA=="
-		},
-		{
-			"description": "10710 狼夫",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmsQs7p5Oi2tHR1hYAXXNafGAAAAA="
-		},
-		{
-			"description": "10711 句点夫",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmsQs7l5Oi2tHR1hYAIK/l5GAAAAA="
-		},
-		{
-			"description": "10812 惜春",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6Amm8Qv7Eqfa0dYWAG9sH5BgAAAA"
-		},
-		{
-			"description": "10913 绝望罗",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmiRM2wK/a0dYWAFeTQwZgAAAA"
-		},
-		{
-			"description": "11005 N辛",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmSRJ2wqHa0dYWABPnXvtgAAAA"
-		},
-		{
-			"description": "11111 剪刀奥",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmyRL2QRN2tLUFAEbct9xgAAAA"
-		},
-		{
-			"description": "11210 神父虫",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmKRLOhwo72toCAIMd+SxgAAAA"
-		},
-		{
-			"description": "11211 炎拳虫",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmKRIuhgo72toCAI9LFYhgAAAA"
+			"description": "345 678 9ab c12",
+			"code": "H4sIAAAAAAAACnMMcUx3BAKnQGcQ5egW6Ammw6HCyRBhd0eIcBRUOB8qXA4RToYKu0KEXdMhwo62tgB9SOvrYAAAAA=="
 		}
 	]
 }

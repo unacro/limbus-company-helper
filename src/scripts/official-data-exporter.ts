@@ -1,4 +1,4 @@
-import utils from "./utils";
+import utils from "../core/utils";
 
 type SupportedLanguage = "en" | "zh_cn";
 type PersonalityObject = {

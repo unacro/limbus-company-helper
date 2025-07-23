@@ -1,11 +1,11 @@
-import { sampleList } from "../data/team-code-samples.json" with {
+import { personalities as sampleList } from "../data/team-code-samples.json" with {
 	type: "json",
 };
-import { TeamCodeConverter } from "./core/team-code-converter";
+import TeamBuilder from "./core/team-builder";
 import utils from "./core/utils";
 
 (() => {
-	const teamCodeConverter = new TeamCodeConverter();
+	const teamCodeConverter = new TeamBuilder();
 	const setting = teamCodeConverter.getSettings();
 	const teamDataStore: {
 		binaryData: Uint8Array | undefined;
@@ -94,11 +94,19 @@ import utils from "./core/utils";
 		const isModified = utils.hasIntersection(differences, indexRange);
 		const sinnerInfo = teamCodeConverter.getSinnerInfoFromByteIndex(
 			indexRange[0],
+			indexRange.map((index) => binaryData[index] as number),
 		);
 		if (sinnerInfo) {
 			tooltipSlices.push(
 				`${sinnerInfo.name} ${sinnerInfo.nameRaw} (id: ${sinnerInfo.id}, startIndex: ${indexRange[0]})`,
 			);
+			if (fieldType === "identity" && sinnerInfo.personality?.id) {
+				tooltipSlices.push(
+					"",
+					`${sinnerInfo.personality.title} (${sinnerInfo.personality.desc})`,
+					"",
+				);
+			}
 		}
 		if (isModified) {
 			tooltipSlices.push(
@@ -284,6 +292,7 @@ title="点击复制 ${teamInfo.teamIndex + 1} 号编队码">${(teamInfo.teamInde
 				} else if (clickedElement.dataset.fieldModified === "true") {
 					const clickedData = {
 						startIndex: clickedElement.dataset.fieldStartIndex,
+						bytes: clickedElement.dataset.fieldBytes,
 						differentData: clickedElement.dataset.fieldBytes
 							?.split(",")
 							.map((byte) => Number.parseInt(byte)),
@@ -297,7 +306,18 @@ title="点击复制 ${teamInfo.teamIndex + 1} 号编队码">${(teamInfo.teamInde
 						startIndex,
 					);
 					const displayContent = [
-						[differenceDetails.standard.join(" "), "默认初始状态"].join(" "),
+						[
+							differenceDetails.standard.join(" "),
+							differenceDetails.standard
+								.map((binStr) =>
+									String.fromCharCode(Number.parseInt(binStr, 2)),
+								)
+								.join(""),
+							differenceDetails.standard
+								.map((binStr) => Number.parseInt(binStr, 2))
+								.join(","),
+							"默认初始状态",
+						].join(" "),
 						[
 							`<span class="display-remark">+</span><i>`,
 							differenceDetails.difference
@@ -305,7 +325,7 @@ title="点击复制 ${teamInfo.teamIndex + 1} 号编队码">${(teamInfo.teamInde
 									num === 0 ? " ".repeat(8) : utils.getBinary(num),
 								)
 								.join(" "),
-							"</i> 差值 (二进制)",
+							"</i>    差值 (二进制)",
 						].join(""),
 						[
 							`<div class="display-hint"><span class="display-remark">+</span><i>`,
@@ -314,7 +334,7 @@ title="点击复制 ${teamInfo.teamIndex + 1} 号编队码">${(teamInfo.teamInde
 									num === 0 ? " ".repeat(8) : num.toString().padStart(8, " "),
 								)
 								.join(" "),
-							"</i> 差值 (十进制)</div>",
+							"</i>    差值 (十进制)</div>",
 						].join(""),
 						[
 							`<span class="display-remark">=</span>`,
@@ -335,10 +355,50 @@ title="点击复制 ${teamInfo.teamIndex + 1} 号编队码">${(teamInfo.teamInde
 									return html.join("");
 								})
 								.join(" "),
+							" ",
+							clickedData.differentData
+								.map((byte) => String.fromCharCode(byte))
+								.join(""),
+							" ",
+							clickedData.differentData.join(","),
 							" 点击的差异部分",
 						].join(""),
 					];
-					differenceDisplay.innerHTML = `<pre>${displayContent.join("<br>")}</pre>`;
+					const extraInfo: string[] = [];
+					const bytes = clickedData.bytes
+						?.split(",")
+						.map((byteString) => Number.parseInt(byteString));
+					if (
+						clickedData.startIndex &&
+						bytes &&
+						bytes.length === 2 &&
+						bytes[0]
+					) {
+						const sinnerInfo = teamCodeConverter.getSinnerInfoFromByteIndex(
+							Number.parseInt(clickedData.startIndex),
+							bytes,
+						);
+						if (sinnerInfo.personality?.title) {
+							const bin = (num: number) => {
+								return num.toString(2).padStart(4, "0");
+							};
+							const hex = (num: number) => {
+								return num.toString(16);
+							};
+							const [left, right] = [bytes[0] >> 4, bytes[0] & 0b1111];
+							if (sinnerInfo.id && sinnerInfo.id % 3 === 0) {
+								extraInfo.push(
+									`${bin(left)}(${hex(left)}) ${bin(right)}(${hex(right)})`,
+									"&emsp;",
+								);
+							}
+							extraInfo.push(
+								`[${sinnerInfo.id}]${sinnerInfo.name} - [${sinnerInfo.personality.id}]`,
+								`${sinnerInfo.personality.title.replaceAll("\n", " ")}`,
+							);
+						}
+					}
+					differenceDisplay.innerHTML = `<pre>${displayContent.join("<br>")}</pre>${extraInfo.join("")}`;
 				}
 			});
 		}
@@ -353,7 +413,7 @@ title="点击复制 ${teamInfo.teamIndex + 1} 号编队码">${(teamInfo.teamInde
 
 	// console.table(sampleList);
 	sampleList
-		.slice(0, Math.floor(sampleList.length / 2))
+		// .slice(0, Math.floor(sampleList.length / 2))
 		.map((teamCodeSample) => {
 			teamDataStore.push({
 				binaryData: teamCodeConverter.debugParse(teamCodeSample.code),

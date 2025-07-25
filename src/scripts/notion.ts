@@ -290,7 +290,7 @@ class NotionClient {
 					},
 				});
 				if (updateSucceed) {
-					console.log("差异数据更新成功");
+					console.info("差异数据更新成功");
 				} else {
 					console.warn("差异数据更新失败");
 				}

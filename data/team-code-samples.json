@@ -53,20 +53,6 @@
 			"code": "H4sIAAAAAAAAA3MJdEx3BAI/R2cQ5Wjg6AmiXKgh7OhoawsABH0uJmAAAAA="
 		}
 	],
-	"egos": [
-		{
-			"description": "液囊",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cgdnR0dfQEcR2RhB3JFna0tQUAgSvOpmAAAAA="
-		},
-		{
-			"description": "液囊 + 另一个EGO",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cPJyDt6ugJ4joihMFc8oQdbW0BCBNB8WAAAAA="
-		},
-		{
-			"description": "小唐 3 EGO",
-			"code": "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6OkY6OHoiEUYBEgTdrS1BQAMFrCyYAAAAA=="
-		}
-	],
 	"order": [
 		{
 			"description": "123 456 789 abc",

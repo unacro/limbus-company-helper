@@ -161,13 +161,25 @@ class EnkephalinCalculator {
 				continue;
 			}
 			allNeedEgoshards += egoshards.needEgoshards;
-			console.log(
+			console.info(
 				`还需要 ${egoshards.needEgoshards} 个 [${id.toString().padStart(2, "0")}]${gameMechanics.sinners[egoshards.id.toString()]?.name} 的自我碎片 (当前完成度 ${egoshards.progress}%)`,
 			);
 		}
-		console.log(
+		const costTime = "24:08";
+		console.info(
 			`合计共缺少 ${allNeedEgoshards} 自我碎片 (还需要花费至少 ${getEnkephalinModuleCost(allNeedEgoshards)} 脑啡肽模块 去刷 ${getNeedMirrorDungeonTimes(allNeedEgoshards)} 次镜牢)`,
 		);
+		const [costMinutes, costSeconds] = costTime
+			.split(":")
+			.map((numStr) => Number.parseInt(numStr)) as [number, number];
+		if (!Number.isNaN(costMinutes) && !Number.isNaN(costSeconds)) {
+			const costSecondsEveryTimes = costMinutes * 60 + costSeconds;
+			const costTotalSeconds =
+				costSecondsEveryTimes * getNeedMirrorDungeonTimes(allNeedEgoshards);
+			console.info(
+				`若每次镜牢用时 ${costTime} 则还需要 ${Math.floor(costTotalSeconds / 60 / 60)} 小时 ${Math.floor((costTotalSeconds % 360) / 60)} 分`,
+			);
+		}
 		return {
 			allNeedEgoshards,
 			enkephalinModuleCost: getEnkephalinModuleCost(allNeedEgoshards),
@@ -209,7 +221,7 @@ class EnkephalinCalculator {
 		const enkephalinModuleCost = skipBattle
 			? needExpLuxcavationTimes * 6
 			: needExpLuxcavationTimes * 3;
-		console.log(
+		console.info(
 			`\n从 ${currentLevel} 级升到 ${expectedLevel} 级预计所需要人格经验为: ${totalNeedExp}`,
 			`\n需要消耗至少 ${enkephalinModuleCost} 脑啡肽模块 去刷 ${needExpLuxcavationTimes} 次经验采光`,
 			`(Difficulty Lv ${gameMechanics.luxcavationRewards.exp[stage.toString()]?.difficultyLevel} 每次${skipBattle ? "跳过" : "不跳过"}战斗 获得 ${levelRewardExp} 经验)`,
@@ -246,10 +258,7 @@ class EnkephalinCalculator {
 	}
 
 	test() {
-		this.setEgoshardsStatus(1, { hadEgoshards: 65, wantCount: 1 });
-		this.setEgoshardsStatus(12, { hadEgoshards: 171, wantCount: 1 });
-		this.setEgoshardsStatus(2, { hadEgoshards: 181, wantCount: 1 });
-		this.setEgoshardsStatus(5, { hadEgoshards: 100, wantCount: 1 });
+		this.setEgoshardsStatus(5, { hadEgoshards: 175, wantCount: 1 });
 		this.setEgoshardsStatus(10, { hadEgoshards: 179, wantCount: 1 });
 		this.setEgoshardsStatus(11, { hadEgoshards: 97, wantCount: 2 });
 		this.farmMirrorDungeon();

@@ -10,10 +10,6 @@ async function syncNotion(dataExporter: OfficialDataExporter) {
 	await notion.syncDatabase(dataExporter.thirdRarityPersonalities);
 }
 
-function calculate() {
-	enkephalin.test();
-}
-
 async function main() {
 	const steamPath = process.env.STEAM_INSTALL_PATH; // `${process.env.APPDATA}/steam`;
 	if (!steamPath) {
@@ -25,7 +21,7 @@ async function main() {
 	const command = process.argv[2];
 	switch (command) {
 		case "start": {
-			calculate();
+			enkephalin.test();
 			break;
 		}
 

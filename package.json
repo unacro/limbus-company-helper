@@ -5,7 +5,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "bun run src/app.ts dev",
-		"debug": "bun build src/team-code-debugger.ts --outdir ./docs/team-code --watch",
+		"debug": "bun build src/team-code-debugger.ts --outdir docs/team-code --watch",
 		"test": "bun test --watch",
 		"start": "bun run src/app.ts start",
 		"sync": "bun run src/app.ts sync"

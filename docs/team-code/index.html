@@ -5,10 +5,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>逆向《边狱巴士》编队码算法</title>
-	<link rel="preload" as="style" crossorigin href="https://fontsapi.zeoseven.com/442/main/result.css"
-		onload="this.rel='stylesheet'" onerror="this.href='https://fontsapi-storage.zeoseven.com/442/main/result.css'" />
+	<link rel="preload" as="style" crossorigin href="https://fontsapi.zeoseven.com/69/main/result.css"
+		onload="this.rel='stylesheet'" onerror="this.href='https://fontsapi-storage.zeoseven.com/69/main/result.css'" />
 	<noscript>
-		<link rel="stylesheet" href="https://fontsapi.zeoseven.com/442/main/result.css" />
+		<link rel="stylesheet" href="https://fontsapi.zeoseven.com/69/main/result.css" />
 	</noscript>
 	<style>
 		:root {
@@ -16,96 +16,173 @@
 			--color-secondary: #f5f5f5;
 			--color-tertiary: #cfd8dc;
 			--color-accent: #0d47a1;
-			--color-highlight: #b71c1c;
-			--color-ignore: #bcaaa4;
-			--color-ignore-2: #b0bec5;
-			--default-mono-font: "Maple Mono NF CN", 'Courier New', Courier, monospace;
-			font-weight: normal;
+			--color-highlight: #ef6c00;
+			--default-font: "Noto Sans CJK SC", "Microsoft Yahei", "PingFang SC", Arial, Helvetica, sans-serif;
+			--card-size: 166px;
 			font-size: 16px;
 		}
 
 		body {
+			font-family: var(--default-font);
+			font-weight: normal;
 			font-size: 1.4rem;
+			background-color: #d7ccc8;
 			color: var(--color-primary);
 		}
 
-		pre,
-		code {
-			margin: 0;
-			font-family: var(--default-mono-font);
-		}
 
-
-		[data-button] {
-			color: var(--color-accent);
-		}
-
-		[data-field-type="identity"] {
-			text-decoration: underline;
-		}
-
-		[data-field-type="ego"] {
-			font-style: italic;
-		}
-
-		[data-field-type="redundant"] {
-			color: var(--color-ignore);
-		}
-
-		[data-field-type="end"] {
-			color: var(--color-ignore-2);
-		}
-
-		.highlight,
-		[data-field-modified="true"] {
-			color: var(--color-highlight);
-		}
-
-		.display-hint {
-			display: inline;
-			color: var(--color-tertiary);
-		}
-
-		.display-remark {
-			position: absolute;
-			margin-left: -1em;
-		}
-
-		#app {
+		div#app {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			flex-direction: column;
 			gap: 1rem;
 			height: 97vh;
-		}
 
-		#team-code-container {
-			padding: 1rem;
-			background-color: var(--color-secondary);
-
-			div.lc-team:nth-child(odd) {
-				background-color: var(--color-tertiary);
+			[data-button-usage] {
+				color: var(--color-accent);
 			}
 
-			[data-button="copyTeamCode"] {
-				cursor: pointer;
+			[data-limbus-sinner] {
+				color: var(--color-highlight);
 			}
 
-			[data-button="copyTeamCode"]:hover {
-				filter: brightness(1.5);
+			div.action-bar {
+				position: fixed;
+				top: 10vh;
+				left: 5vw;
+				z-index: 100;
+
+				button {
+					padding: 10px 20px;
+					font-size: 16px;
+					color: var(--color-secondary);
+					background: var(--color-accent);
+					border: none;
+					border-radius: 5px;
+					cursor: pointer;
+				}
 			}
 
-			[data-button="copyTeamCode"]:active {
-				filter: brightness(0.6);
+			div[data-sinner-details] {
+				cursor: default;
+				display: flex;
+				gap: 2rem;
+
+				div[data-display-identity] {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					flex-direction: column;
+					width: var(--card-size);
+					height: calc(var(--card-size) * 231 / 166);
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position:
+						left calc(var(--card-size) * 5) top calc(var(--card-size) * 5),
+						center,
+						center;
+					border-radius: calc(var(--card-size) * 0.1);
+					color: var(--color-secondary);
+
+					[title] {
+						cursor: help;
+					}
+
+					&>div:first-child {
+						position: relative;
+						top: 7.5rem;
+					}
+
+					&>div:last-child {
+						position: relative;
+						right: 1.5rem;
+						width: 100%;
+						bottom: 1rem;
+						text-align: end;
+						font-size: 75%;
+						font-weight: bold;
+					}
+				}
+
+				div[data-display-identity]:hover {
+					background-position:
+						center,
+						center,
+						center;
+				}
+
+				div[data-display-egos]>div {
+					cursor: help;
+				}
+
+				div[data-display-ego-level="ZAYIN"] {
+					color: #00ff00;
+				}
+
+				div[data-display-ego-level="TETH"] {
+					color: #1e90ff;
+				}
+
+				div[data-display-ego-level="HE"] {
+					color: #ffff00;
+				}
+
+				div[data-display-ego-level="WAW"] {
+					color: #8a2be2;
+				}
+
+				div[data-display-ego-level="ALEPH"] {
+					color: #ff0000;
+				}
 			}
 
-			[data-field-type="identity"] {
-				cursor: help;
-			}
+			div#limbus-team-list {
+				padding: 1rem;
+				background-color: var(--color-secondary);
 
-			[data-field-modified="true"] {
-				cursor: cell;
+				div[data-limbus-team] {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					gap: .75rem;
+
+					div[data-button-usage="copyTeamCode"] {
+						cursor: pointer;
+						user-select: none;
+						-webkit-user-select: none;
+						-moz-user-select: none;
+						-ms-user-select: none;
+					}
+
+					div[data-button-usage="copyTeamCode"]:hover {
+						filter: brightness(1.5);
+					}
+
+					div[data-button-usage="copyTeamCode"]:active {
+						filter: brightness(0.6);
+					}
+
+					div[data-limbus-sinner-list] {
+						flex-grow: 1;
+						display: flex;
+						gap: .5rem;
+						font-weight: bold;
+						font-size: 75%;
+
+						span[data-limbus-sinner] {
+							cursor: pointer;
+							user-select: none;
+							-webkit-user-select: none;
+							-moz-user-select: none;
+							-ms-user-select: none;
+						}
+					}
+				}
+
+				div[data-limbus-team]:nth-child(odd) {
+					background-color: var(--color-tertiary);
+				}
 			}
 		}
 	</style>
@@ -113,18 +190,19 @@
 
 <body>
 	<div id="app">
-		<div id="team-code-parser">
-			<input type="text" id="team-code-input" placeholder="请输入编队码" />
-			<button type="button">解析</button>
+		<div data-sinner-details="0">
+			<div>
+				<div>点击<span data-limbus-sinner="example">罪人名字</span>显示详情</div>
+				<div>点击<span data-button-usage="example">队伍编号</span>复制编队码</div>
+			</div>
 		</div>
-		<div id="difference-display">
-			点击<span class="highlight">红色差异</span>显示详情<br>
-			点击<span data-button="example">蓝色编号</span>复制编队码
+		<div class="action-bar">
+			<button id="load-team-code" type="button">载入编队码</button>
 		</div>
-		<div id="team-code-container"></div>
+		<div id="limbus-team-list"></div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/pako@latest/dist/pako.min.js"></script>
-	<script src="./team-code-debugger.js" defer></script>
+	<script src="team-code-debugger.js" defer></script>
 </body>
 
 </html>

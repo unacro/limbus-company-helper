@@ -1,7 +1,7 @@
 import EnkephalinCalculator from "./core/enkephalin";
-import TeamBuilder from "./core/team-builder";
+import { TeamCodec } from "./core/team-codec";
 
 const enkephalin = new EnkephalinCalculator();
-const teambuilder = new TeamBuilder();
+const teamcodec = new TeamCodec();
 
-export { enkephalin, teambuilder };
+export { enkephalin, teamcodec };

@@ -54,21 +54,8 @@ var personalities = [
   }
 ];
 
-// data/game-mechanics.json
-var sinners = {
-  "1": { id: 1, nameRaw: "Yi Sang", name: "李箱" },
-  "2": { id: 2, nameRaw: "Faust", name: "浮士德" },
-  "3": { id: 3, nameRaw: "Don Quixote", name: "堂吉诃德" },
-  "4": { id: 4, nameRaw: "Ryōshū", name: "良秀" },
-  "5": { id: 5, nameRaw: "Meursault", name: "默尔索" },
-  "6": { id: 6, nameRaw: "Hong Lu", name: "鸿璐" },
-  "7": { id: 7, nameRaw: "Heathcliff", name: "希斯克利夫" },
-  "8": { id: 8, nameRaw: "Ishmael", name: "以实玛利" },
-  "9": { id: 9, nameRaw: "Rodion", name: "罗佳" },
-  "10": { id: 10, nameRaw: "Sinclair", name: "辛克莱" },
-  "11": { id: 11, nameRaw: "Outis", name: "奥提斯" },
-  "12": { id: 12, nameRaw: "Gregor", name: "格里高尔" }
-};
+// data/egos.json
+var egos_default = [{ id: 20101, name: "乌瞰刀", desc: "李箱的基础E.G.O装备", nameRaw: "Crow’s Eye View", descRaw: "Yi Sang’s Base E.G.O" }, { id: 20102, name: "终末火柴之光", desc: "李箱的专用E.G.O装备", nameRaw: "4th Match Flame", descRaw: "Yi Sang’s E.G.O Gear" }, { id: 20103, name: "祈愿石", desc: "李箱的专用E.G.O装备", nameRaw: "Wishing Cairn", descRaw: "Yi Sang’s E.G.O Gear" }, { id: 20201, name: "表象放射器", desc: "浮士德的基础E.G.O装备", nameRaw: "Representation Emitter", descRaw: "Faust’s Base E.G.O" }, { id: 20202, name: "液囊", desc: "浮士德的专用E.G.O装备", nameRaw: "Fluid Sac", descRaw: "Faust’s E.G.O Gear" }, { id: 20203, name: "诅咒之钉", desc: "浮士德的专用E.G.O装备", nameRaw: "Hex Nail", descRaw: "Faust’s E.G.O Gear" }, { id: 20301, name: "桑丘之血", desc: "堂吉诃德的基础E.G.O装备", nameRaw: "La Sangre de Sancho", descRaw: "Don Quixote’s Base E.G.O" }, { id: 20302, name: "液囊", desc: "堂吉诃德的专用E.G.O装备", nameRaw: "Fluid Sac", descRaw: "Don Quixote’s E.G.O Gear" }, { id: 20401, name: "森罗炎象", desc: "良秀的基础E.G.O装备", nameRaw: "Forest for the Flames", descRaw: "Ryōshū’s Base E.G.O" }, { id: 20402, name: "终末火柴之光", desc: "良秀的专用E.G.O装备", nameRaw: "4th Match Flame", descRaw: "Ryōshū’s E.G.O Gear" }, { id: 20501, name: "他人之锁", desc: "默尔索的基础E.G.O装备", nameRaw: "Chains of Others", descRaw: "Meursault’s Base E.G.O" }, { id: 20502, name: "脱线一击", desc: "默尔索的专用E.G.O装备", nameRaw: "Screwloose Wallop", descRaw: "Meursault’s E.G.O Gear" }, { id: 20503, name: "执行", desc: "默尔索的专用E.G.O装备", nameRaw: "Pursuance", descRaw: "Meursault’s E.G.O Gear" }, { id: 20601, name: "太虚幻境", desc: "鸿璐的基础E.G.O装备", nameRaw: "Land of Illusion", descRaw: "Hong Lu’s Base E.G.O" }, { id: 20602, name: "粉红欲望", desc: "鸿璐的专用E.G.O装备", nameRaw: "Roseate Desire", descRaw: "Hong Lu’s E.G.O Gear" }, { id: 20701, name: "裹尸袋", desc: "希斯克利夫的基础E.G.O装备", nameRaw: "Bodysack", descRaw: "Heathcliff’s Base E.G.O" }, { id: 20702, name: "电线杆", desc: "希斯克利夫的专用E.G.O装备", nameRaw: "Telepole", descRaw: "Heathcliff’s E.G.O Gear" }, { id: 20801, name: "捕鲸叉", desc: "以实玛利的基础E.G.O装备", nameRaw: "Snagharpoon", descRaw: "Ishmael’s Base E.G.O" }, { id: 20802, name: "粉红欲望", desc: "以实玛利的专用E.G.O装备", nameRaw: "Roseate Desire", descRaw: "Ishmael’s E.G.O Gear" }, { id: 20803, name: "红艳煞", desc: "以实玛利的专用E.G.O装备", nameRaw: "Ardor Blossom Star", descRaw: "Ishmael’s E.G.O Gear" }, { id: 20901, name: "覆水难收", desc: "罗佳的基础E.G.O装备", nameRaw: "What is Cast", descRaw: "Rodion’s Base E.G.O" }, { id: 20902, name: "终末火柴之光", desc: "罗佳的专用E.G.O装备", nameRaw: "4th Match Flame", descRaw: "Rodion’s E.G.O Gear" }, { id: 20903, name: "冰结之爪", desc: "罗佳的专用E.G.O装备", nameRaw: "Rime Shank", descRaw: "Rodion’s E.G.O Gear" }, { id: 21001, name: "智慧的青枝", desc: "辛克莱的基础E.G.O装备", nameRaw: "Branch of Knowledge", descRaw: "Sinclair’s Base E.G.O" }, { id: 21002, name: "迫近之日", desc: "辛克莱的专用E.G.O装备", nameRaw: "Impending Day", descRaw: "Sinclair’s E.G.O Gear" }, { id: 21101, name: "致智慧与苦难", desc: "奥提斯的基础E.G.O装备", nameRaw: "To Páthos Máthos", descRaw: "Outis’s Base E.G.O" }, { id: 21102, name: "黑檀枝干", desc: "奥提斯的专用E.G.O装备", nameRaw: "Ebony Stem", descRaw: "Outis’s E.G.O Gear" }, { id: 21103, name: "空即是色", desc: "奥提斯的专用E.G.O装备", nameRaw: "Ya Śūnyatā Tad Rūpam", descRaw: "Outis’s E.G.O Gear" }, { id: 21201, name: "某一日，突然", desc: "格里高尔的基础E.G.O装备", nameRaw: "Suddenly, One Day", descRaw: "Gregor’s Base E.G.O" }, { id: 21202, name: "障眼把戏", desc: "格里高尔的专用E.G.O装备", nameRaw: "Legerdemain", descRaw: "Gregor’s E.G.O Gear" }, { id: 21203, name: "提灯", desc: "格里高尔的专用E.G.O装备", nameRaw: "Lantern", descRaw: "Gregor’s E.G.O Gear" }, { id: 20303, name: "电线杆", desc: "堂吉诃德的专用E.G.O装备", nameRaw: "Telepole", descRaw: "Don Quixote’s E.G.O Gear" }, { id: 20204, name: "电线杆", desc: "浮士德的专用E.G.O装备", nameRaw: "Telepole", descRaw: "Faust’s E.G.O Gear" }, { id: 20304, name: "一生炖菜", desc: "堂吉诃德的专用E.G.O装备", nameRaw: "Lifetime Stew", descRaw: "Don Quixote’s E.G.O Gear" }, { id: 21003, name: "一生炖菜", desc: "辛克莱的专用E.G.O装备", nameRaw: "Lifetime Stew", descRaw: "Sinclair’s E.G.O Gear" }, { id: 20104, name: "次元撕裂者", desc: "李箱的专用E.G.O装备", nameRaw: "Dimension Shredder", descRaw: "Yi Sang’s E.G.O Gear" }, { id: 20603, name: "次元撕裂者", desc: "鸿璐的专用E.G.O装备", nameRaw: "Dimension Shredder", descRaw: "Hong Lu’s E.G.O Gear" }, { id: 20504, name: "斗牛披风", desc: "默尔索的专用E.G.O装备", nameRaw: "Capote", descRaw: "Meursault’s E.G.O Gear" }, { id: 20804, name: "斗牛披风", desc: "以实玛利的专用E.G.O装备", nameRaw: "Capote", descRaw: "Ishmael’s E.G.O Gear" }, { id: 21104, name: "狐雨", desc: "奥提斯的专用E.G.O装备", nameRaw: "Sunshower", descRaw: "Outis’s E.G.O Gear" }, { id: 21204, name: "AEDD", desc: "格里高尔的专用E.G.O装备", nameRaw: "AEDD", descRaw: "Gregor’s E.G.O Gear" }, { id: 20703, name: "AEDD", desc: "希斯克利夫的专用E.G.O装备", nameRaw: "AEDD", descRaw: "Heathcliff’s E.G.O Gear" }, { id: 20105, name: "狐雨", desc: "李箱的专用E.G.O装备", nameRaw: "Sunshower", descRaw: "Yi Sang’s E.G.O Gear" }, { id: 20403, name: "赤瞳", desc: "良秀的专用E.G.O装备", nameRaw: "Red Eyes", descRaw: "Ryōshū’s E.G.O Gear" }, { id: 20404, name: "赤瞳（开）", desc: "良秀的专用E.G.O装备", nameRaw: "Red Eyes (Open)", descRaw: "Ryōshū’s E.G.O Gear" }, { id: 20405, name: "美味苏打", desc: "良秀的专用E.G.O装备", nameRaw: "Soda", descRaw: "Ryōshū’s E.G.O Gear" }, { id: 20604, name: "美味苏打", desc: "鸿璐的专用E.G.O装备", nameRaw: "Soda", descRaw: "Hong Lu’s E.G.O Gear" }, { id: 21004, name: "提灯", desc: "辛克莱的专用E.G.O装备", nameRaw: "Lantern", descRaw: "Sinclair’s E.G.O Gear" }, { id: 20704, name: "空即是色", desc: "希斯克利夫的专用E.G.O装备", nameRaw: "Ya Śūnyatā Tad Rūpam", descRaw: "Heathcliff’s E.G.O Gear" }, { id: 20505, name: "悔恨", desc: "默尔索的专用E.G.O装备", nameRaw: "Regret", descRaw: "Meursault’s E.G.O Gear" }, { id: 20605, name: "沸腾腐蚀", desc: "鸿璐的专用E.G.O装备", nameRaw: "Effervescent Corrosion", descRaw: "Hong Lu’s E.G.O Gear" }, { id: 20205, name: "9章2节", desc: "浮士德的专用E.G.O装备", nameRaw: "9:2", descRaw: "Faust’s E.G.O Gear" }, { id: 20406, name: "盲目", desc: "良秀的专用E.G.O装备", nameRaw: "Blind Obsession", descRaw: "Ryōshū’s E.G.O Gear" }, { id: 20805, name: "盲目", desc: "以实玛利的专用E.G.O装备", nameRaw: "Blind Obsession", descRaw: "Ishmael’s E.G.O Gear" }, { id: 20904, name: "沸腾腐蚀", desc: "罗佳的专用E.G.O装备", nameRaw: "Effervescent Corrosion", descRaw: "Rodion’s E.G.O Gear" }, { id: 21005, name: "9章2节", desc: "辛克莱的专用E.G.O装备", nameRaw: "9:2", descRaw: "Sinclair’s E.G.O Gear" }, { id: 20905, name: "执行", desc: "罗佳的专用E.G.O装备", nameRaw: "Pursuance", descRaw: "Rodion’s E.G.O Gear" }, { id: 20705, name: "悲惨假日", desc: "希斯克利夫的专用E.G.O装备", nameRaw: "Holiday", descRaw: "Heathcliff’s E.G.O Gear" }, { id: 21105, name: "悲惨假日", desc: "奥提斯的专用E.G.O装备", nameRaw: "Holiday", descRaw: "Outis’s E.G.O Gear" }, { id: 20305, name: "祈愿石", desc: "堂吉诃德的专用E.G.O装备", nameRaw: "Wishing Cairn", descRaw: "Don Quixote’s E.G.O Gear" }, { id: 21205, name: "荆棘花园", desc: "格里高尔的专用E.G.O装备", nameRaw: "Garden of Thorns", descRaw: "Gregor’s E.G.O Gear" }, { id: 21206, name: "往昔", desc: "格里高尔的专用E.G.O装备", nameRaw: "Bygone Days", descRaw: "Gregor’s E.G.O Gear" }, { id: 20106, name: "往昔", desc: "李箱的专用E.G.O装备", nameRaw: "Bygone Days", descRaw: "Yi Sang’s E.G.O Gear" }, { id: 20306, name: "电子哀鸣", desc: "堂吉诃德的专用E.G.O装备", nameRaw: "Electric Screaming", descRaw: "Don Quixote’s E.G.O Gear" }, { id: 20506, name: "电子哀鸣", desc: "默尔索的专用E.G.O装备", nameRaw: "Electric Screaming", descRaw: "Meursault’s E.G.O Gear" }, { id: 21106, name: "拘束", desc: "奥提斯的专用E.G.O装备", nameRaw: "Binds", descRaw: "Outis’s E.G.O Gear" }, { id: 20706, name: "拘束", desc: "希斯克利夫的专用E.G.O装备", nameRaw: "Binds", descRaw: "Heathcliff’s E.G.O Gear" }, { id: 20806, name: "翅振", desc: "以实玛利的专用E.G.O装备", nameRaw: "Wingbeat", descRaw: "Ishmael’s E.G.O Gear" }, { id: 20906, name: "血欲", desc: "罗佳的专用E.G.O装备", nameRaw: "Sanguine Desire", descRaw: "Rodion’s E.G.O Gear" }, { id: 20606, name: "低泣", desc: "鸿璐的专用E.G.O装备", nameRaw: "Cavernous Wailing", descRaw: "Hong Lu’s E.G.O Gear" }, { id: 21006, name: "低泣", desc: "辛克莱的专用E.G.O装备", nameRaw: "Cavernous Wailing", descRaw: "Sinclair’s E.G.O Gear" }, { id: 20206, name: "永恒", desc: "浮士德的专用E.G.O装备", nameRaw: "Everlasting", descRaw: "Faust’s E.G.O Gear" }, { id: 20407, name: "轻蔑，敬畏", desc: "良秀的专用E.G.O装备", nameRaw: "Contempt, Awe", descRaw: "Ryōshū’s E.G.O Gear" }, { id: 20707, name: "凶弹", desc: "希斯克利夫的专用E.G.O装备", nameRaw: "Fell Bullet", descRaw: "Heathcliff’s E.G.O Gear" }, { id: 21107, name: "次元撕裂者", desc: "奥提斯的专用E.G.O装备", nameRaw: "Dimension Shredder", descRaw: "Outis’s E.G.O Gear" }, { id: 21207, name: "庄严哀悼", desc: "格里高尔的专用E.G.O装备", nameRaw: "Solemn Lament", descRaw: "Gregor’s E.G.O Gear" }, { id: 20807, name: "往昔", desc: "以实玛利的专用E.G.O装备", nameRaw: "Bygone Days", descRaw: "Ishmael’s E.G.O Gear" }, { id: 20207, name: "套索", desc: "浮士德的专用E.G.O装备", nameRaw: "Lasso", descRaw: "Faust’s E.G.O Gear" }, { id: 20607, name: "套索", desc: "鸿璐的专用E.G.O装备", nameRaw: "Lasso", descRaw: "Hong Lu’s E.G.O Gear" }, { id: 21007, name: "诅咒之钉", desc: "辛克莱的专用E.G.O装备", nameRaw: "Hex Nail", descRaw: "Sinclair’s E.G.O Gear" }, { id: 20907, name: "诅咒之钉", desc: "罗佳的专用E.G.O装备", nameRaw: "Hex Nail", descRaw: "Rodion’s E.G.O Gear" }, { id: 20507, name: "渴望-蜜卡拉", desc: "默尔索的专用E.G.O装备", nameRaw: "Yearning-Mircalla", descRaw: "Meursault’s E.G.O Gear" }, { id: 20307, name: "渴望-蜜卡拉", desc: "堂吉诃德的专用E.G.O装备", nameRaw: "Yearning-Mircalla", descRaw: "Don Quixote’s E.G.O Gear" }, { id: 20107, name: "凶弹", desc: "李箱的专用E.G.O装备", nameRaw: "Fell Bullet", descRaw: "Yi Sang’s E.G.O Gear" }, { id: 20708, name: "失衡惯性", desc: "希斯克利夫的专用E.G.O装备", nameRaw: "Asymmetrical Inertia", descRaw: "Heathcliff’s E.G.O Gear" }, { id: 20808, name: "圣诞梦魇", desc: "以实玛利的专用E.G.O装备", nameRaw: "Christmas Nightmare", descRaw: "Ishmael’s E.G.O Gear" }, { id: 21208, name: "圣诞梦魇", desc: "格里高尔的专用E.G.O装备", nameRaw: "Christmas Nightmare", descRaw: "Gregor’s E.G.O Gear" }, { id: 21108, name: "魔弹", desc: "奥提斯的专用E.G.O装备", nameRaw: "Magic Bullet", descRaw: "Outis’s E.G.O Gear" }, { id: 20408, name: "胸痛", desc: "良秀的专用E.G.O装备", nameRaw: "Thoracalgia", descRaw: "Ryōshū’s E.G.O Gear" }, { id: 20208, name: "胸痛", desc: "浮士德的专用E.G.O装备", nameRaw: "Thoracalgia", descRaw: "Faust’s E.G.O Gear" }, { id: 20908, name: "指定审判", desc: "罗佳的专用E.G.O装备", nameRaw: "Indicant's Trial", descRaw: "Rodion’s E.G.O Gear" }, { id: 20308, name: "朱符", desc: "堂吉诃德的专用E.G.O装备", nameRaw: "Red Sheet", descRaw: "Don Quixote’s E.G.O Gear" }, { id: 20809, name: "蝍蛆杀", desc: "以实玛利的专用E.G.O装备", nameRaw: "Hundred-Footed Death Maggot [蝍蛆殺]", descRaw: "Ishmael’s E.G.O Gear" }, { id: 21008, name: "污血泣泪", desc: "辛克莱的专用E.G.O装备", nameRaw: "Tears of the Tarnished Blood [汚血泣淚]", descRaw: "Sinclair’s E.G.O Gear" }, { id: 20608, name: "污血泣泪", desc: "鸿璐的专用E.G.O装备", nameRaw: "Tears of the Tarnished Blood [汚血泣淚]", descRaw: "Hong Lu’s E.G.O Gear" }, { id: 20309, name: "以爱与憎之名", desc: "堂吉诃德的专用E.G.O装备", nameRaw: "In the Name of Love and Hate", descRaw: "Don Quixote’s E.G.O Gear" }];
 
 // data/personalities.json
 var personalities_default = [{ id: 10101, title: `LCB
@@ -356,12 +343,12 @@ var Utils = {
   ceil(num) {
     return Math.ceil(this.round(num));
   },
-  getBinary(num, hasPrefix = false, separator = "", separation = 4) {
+  getBinary(num, { hasPrefix = false, padLength = 8, separator = "", separation = 4 } = {}) {
     if (num < 0) {
-      return num.toString(2).padStart(8, " ");
+      return num.toString(2).padStart(padLength, " ");
     }
-    let binaryString = num.toString(2).padStart(8, "0");
-    if (separator && separator !== "") {
+    let binaryString = num.toString(2).padStart(padLength, "0");
+    if (separator && typeof separator === "string" && separator !== "") {
       binaryString = binaryString.replace(new RegExp(`\\B(?=(\\d{${separation}})+$)`, "g"), separator);
     }
     return hasPrefix ? `0b${binaryString}` : binaryString;
@@ -375,6 +362,61 @@ var Utils = {
     }
     const uniqueSet = new Set(targetArray);
     return templateArray.some((element) => uniqueSet.has(element));
+  },
+  getBinaryFromBase64(asciiString) {
+    const binaryString = atob(asciiString);
+    const rawBytes = new Uint8Array(binaryString.length);
+    for (let i = 0;i < binaryString.length; i++) {
+      rawBytes[i] = binaryString.charCodeAt(i);
+    }
+    return rawBytes;
+  },
+  getBase64FromBinary(binary) {
+    if (typeof binary === "string" && binary.length % 8 !== 0) {
+      console.error("不是有效的二进制字符串");
+      return;
+    }
+    let binaryBytes = null;
+    if (typeof binary === "string") {
+      binaryBytes = new Uint8Array(Math.ceil(binary.length / 8));
+      for (let i = 0;i < binaryBytes.length; i++) {
+        const byte = Number.parseInt(binary.slice(i * 8, i * 8 + 8), 2);
+        if (Number.isNaN(byte)) {
+          console.error(`将目标二进制字符串 ${binary} 的切片 ${binary.slice(i * 8, i * 8 + 8)} 转换为字节失败`);
+          return;
+        }
+        binaryBytes[i] = byte;
+      }
+    } else if (binary instanceof Uint8Array) {
+      binaryBytes = new Uint8Array(binary.length);
+      binaryBytes.set(binary);
+    }
+    if (!binaryBytes) {
+      console.error({ msg: "读取要编码的二进制数据失败", binary });
+      return;
+    }
+    const base64CharSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    const asciiCharList = [];
+    for (let i = 0;i < binaryBytes.length; i += 3) {
+      const [byte1, byte2, byte3] = [
+        binaryBytes[i],
+        binaryBytes[i + 1],
+        binaryBytes[i + 2]
+      ];
+      const enc1 = byte1 >> 2;
+      const enc2 = (byte1 & 3) << 4 | byte2 >> 4;
+      const enc3 = (byte2 & 15) << 2 | byte3 >> 6;
+      const enc4 = byte3 & 63;
+      asciiCharList.push([
+        base64CharSet.charAt(enc1),
+        base64CharSet.charAt(enc2),
+        Number.isNaN(byte2) ? "" : base64CharSet.charAt(enc3),
+        Number.isNaN(byte3) ? "" : base64CharSet.charAt(enc4),
+        Number.isNaN(byte2) ? "==" : Number.isNaN(byte3) ? "=" : ""
+      ].join(""));
+    }
+    const base64String = asciiCharList.join("");
+    return base64String;
   },
   async readJsonFile(filepath) {
     const file = Bun.file(filepath);
@@ -393,402 +435,255 @@ var Utils = {
 };
 var utils_default = Utils;
 
-// src/core/team-builder.ts
-var sinnersInfo = sinners;
+// src/core/team-codec.ts
+function queryPersonalityDetails(personalityId) {
+  if (!personalityId) {
+    return;
+  }
+  return personalities_default.filter((personality) => personality.id === personalityId).pop();
+}
+function queryEgoDetails(egoId) {
+  if (!egoId) {
+    return;
+  }
+  return egos_default.filter((ego) => ego.id === egoId).pop();
+}
 
-class TeamBuilder {
-  #settings = {
-    maxBytesLength: 96,
-    groupBytesLength: 23,
-    groupCount: 4,
-    identityBytesLength: 2,
-    egoBytesLength: 4
-  };
-  #byteMask;
-  get #settingGroupLength() {
-    return Math.floor(12 / this.#settings.groupCount);
-  }
-  #getSinnerIdFromByteIndex(byteIndex) {
-    const trioIndex = Math.floor(byteIndex / this.#settings.groupBytesLength);
-    const innerTrioIndex = Math.floor(byteIndex % this.#settings.groupBytesLength / 8);
-    return trioIndex * this.#settingGroupLength + innerTrioIndex + 1;
-  }
-  #getStartIndexFromSinnerId(sinnerId) {
-    const sinnerIndex = sinnerId - 1;
-    const trioIndex = Math.floor(sinnerIndex / this.#settingGroupLength);
-    const innerTrioIndex = sinnerIndex % this.#settingGroupLength;
-    return trioIndex * this.#settings.groupBytesLength + innerTrioIndex * 8;
-  }
-  constructor() {
-    const byteMask = [];
-    const redundantStartIndex = this.#settings.maxBytesLength - this.#settings.maxBytesLength % this.#settings.groupBytesLength;
-    for (let i = 0;i < this.#settings.maxBytesLength; i++) {
-      const innerIndex = i % this.#settings.groupBytesLength % 8;
-      const mask = {
-        id: this.#getSinnerIdFromByteIndex(i),
-        byteType: "unknown"
-      };
-      if (i >= redundantStartIndex) {
-        mask.byteType = "redundant";
-      } else if (innerIndex < this.#settings.identityBytesLength) {
-        mask.byteType = "identity";
-      } else if (innerIndex < this.#settings.identityBytesLength + this.#settings.egoBytesLength) {
-        mask.byteType = "ego";
-      } else {
-        mask.byteType = "redundant";
-      }
-      byteMask.push(mask);
-    }
-    this.#byteMask = [...byteMask];
-  }
-  getSettings() {
-    return this.#settings;
-  }
-  #decompressBase64(teamCodeBase64) {
+class TeamCodec {
+  #getRawDataFromTeamCode(compressedBase64) {
     try {
-      const binaryString = atob(teamCodeBase64);
-      const bytes = new Uint8Array(binaryString.length);
-      for (let i = 0;i < binaryString.length; i++) {
-        bytes[i] = binaryString.charCodeAt(i);
+      const compressedBytes = utils_default.getBinaryFromBase64(compressedBase64);
+      const decompressedBytes = pako.inflate(compressedBytes);
+      const decompressedBase64Chars = [];
+      for (let i = 0;i < decompressedBytes.length; i++) {
+        const asciiCharCode = decompressedBytes[i];
+        decompressedBase64Chars.push(String.fromCharCode(asciiCharCode));
       }
-      const decompressed = pako.inflate(bytes);
-      return decompressed;
+      const rawDataBytes = utils_default.getBinaryFromBase64(decompressedBase64Chars.join(""));
+      const rawDataBinaryList = [];
+      for (let i = 0;i < rawDataBytes.length; i++) {
+        const byte = rawDataBytes[i];
+        const binary = byte.toString(2).padStart(8, "0");
+        rawDataBinaryList.push(...binary);
+      }
+      return rawDataBinaryList;
     } catch (error) {
       console.warn("Parse team code failed:", error);
     }
-    return;
+    return [];
   }
-  parse(teamCodeBase64) {
-    const rawBinaryData = this.#decompressBase64(teamCodeBase64);
-    return rawBinaryData;
+  decode(teamCodeBase64) {
+    const rawBinaryBits = this.#getRawDataFromTeamCode(teamCodeBase64);
+    if (!utils_default.isValidArray(rawBinaryBits)) {
+      return [];
+    }
+    const sinnerBits = 8 + 4 + 7 * 4 + 6;
+    const getValueFromBinary = (binary, start, end) => Number.parseInt(binary.slice(start, end).join(""), 2);
+    const getPropertyId = (sinnerId, propertyNumero, isEgo = true) => propertyNumero > 0 ? Number.parseInt([
+      isEgo ? 2 : 1,
+      sinnerId.toString().padStart(2, "0"),
+      propertyNumero.toString().padStart(2, "0")
+    ].join("")) : undefined;
+    const sinnerDataList = [];
+    for (let sinnerId = 1;sinnerId <= 12; sinnerId++) {
+      const startIndex = (sinnerId - 1) * sinnerBits;
+      const sinnerBinary = rawBinaryBits.slice(startIndex, startIndex + sinnerBits);
+      sinnerDataList.push({
+        sinnerId,
+        identityId: getPropertyId(sinnerId, getValueFromBinary(sinnerBinary, 0, 8), false),
+        order: getValueFromBinary(sinnerBinary, 8, 12),
+        egos: {
+          ZAYIN: getPropertyId(sinnerId, getValueFromBinary(sinnerBinary, 12, 19)),
+          TETH: getPropertyId(sinnerId, getValueFromBinary(sinnerBinary, 19, 26)),
+          HE: getPropertyId(sinnerId, getValueFromBinary(sinnerBinary, 26, 33)),
+          WAW: getPropertyId(sinnerId, getValueFromBinary(sinnerBinary, 33, 40)),
+          ALEPH: getPropertyId(sinnerId, getValueFromBinary(sinnerBinary, 40, 46))
+        }
+      });
+    }
+    return sinnerDataList;
   }
-  #compressBase64(binaryData) {
+  #getTeamCodeFromRawData(rawDataBinaryString) {
     try {
-      const compressed = pako.gzip(binaryData);
-      let binaryString = "";
-      for (let i = 0;i < compressed.length; i++) {
-        binaryString += String.fromCharCode(compressed[i]);
+      const base64String = utils_default.getBase64FromBinary(rawDataBinaryString);
+      if (!base64String || base64String.length !== 96) {
+        return;
       }
-      return btoa(binaryString);
+      const base64Bytes = new Uint8Array(base64String.length);
+      for (let i = 0;i < base64String.length; i++) {
+        base64Bytes[i] = base64String.charCodeAt(i);
+      }
+      const compressedBytes = pako.gzip(base64Bytes, { level: 9 });
+      return utils_default.getBase64FromBinary(compressedBytes);
     } catch (error) {
       console.warn("Generate team code failed:", error);
     }
     return;
   }
-  stringify(binaryData) {
-    return this.#compressBase64(binaryData);
+  encode(sinnerInfoList) {
+    const binaryDataString = sinnerInfoList.map((sinnerInfo) => [
+      utils_default.getBinary(sinnerInfo.identityId % 100, { padLength: 8 }),
+      utils_default.getBinary(sinnerInfo.order, { padLength: 4 }),
+      Object.entries(sinnerInfo.egos).map(([egoLevel, egoId]) => egoLevel === "ALEPH" ? utils_default.getBinary((egoId ?? 0) % 100, { padLength: 6 }) : utils_default.getBinary((egoId ?? 0) % 100, { padLength: 7 })).join("")
+    ].join("")).join("") + "0".repeat(8);
+    return this.#getTeamCodeFromRawData(binaryDataString);
   }
-  getPersonalityNumeroFromBytes([byte1, byte2], encodeType) {
-    let personalityNumero = -1;
-    if (!byte1 || !byte2) {
-      return personalityNumero;
-    }
-    switch (encodeType) {
-      case 0: {
-        personalityNumero = ((byte1 & 15) << 2) + (byte2 >> 4) - 8;
-        break;
-      }
-      case 1: {
-        personalityNumero = byte1 - 65;
-        break;
-      }
-      case 2: {
-        const [offset, value, feature] = [
-          byte1 >> 6 ^ 1,
-          byte1 >> 2 & 15,
-          byte1 & 3
-        ];
-        personalityNumero = offset + value - (feature >> 1);
-        break;
-      }
-      default: {
-        break;
-      }
-    }
-    return personalityNumero;
-  }
-  getPersonalityIdFromBytes(sinnerId, bytes) {
-    const padNumber = (num) => num.toString().padStart(2, "0");
-    const personalityNumero = this.getPersonalityNumeroFromBytes(bytes, (sinnerId - 1) % this.#settingGroupLength);
-    if (personalityNumero < 1) {
-      return;
-    }
-    return Number.parseInt(["1", padNumber(sinnerId), padNumber(personalityNumero)].join(""));
-  }
-  getPersonalityInfoFromBytes(sinnerId, bytes) {
-    if (!utils_default.isValidArray(bytes)) {
-      return;
-    }
-    const personalityId = this.getPersonalityIdFromBytes(sinnerId, bytes);
-    if (!personalityId) {
-      return;
-    }
-    const foundPersonality = personalities_default.filter((personality) => personality.id === personalityId).pop();
-    return { ...foundPersonality };
-  }
-  getSinnerInfoFromByteIndex(byteIndex, bytes = []) {
-    const sinnerId = this.#getSinnerIdFromByteIndex(byteIndex);
-    const sinnerInfo = sinnersInfo[sinnerId.toString()];
-    const personality = this.getPersonalityInfoFromBytes(sinnerId, bytes);
-    return { ...sinnerInfo, personality };
-  }
-  debugParse(teamCodeBase64) {
-    const rawBinaryData = this.#decompressBase64(teamCodeBase64);
-    return rawBinaryData;
+  loadSinnerDetails(sinner) {
+    const personalityInfo = {
+      sinnerId: sinner.sinnerId,
+      identity: queryPersonalityDetails(sinner.identityId),
+      egos: {
+        ZAYIN: undefined,
+        TETH: undefined,
+        HE: undefined,
+        WAW: undefined,
+        ALEPH: undefined
+      },
+      order: sinner.order
+    };
+    Object.entries(sinner.egos).map(([egoLevel, egoId]) => {
+      personalityInfo.egos[egoLevel] = queryEgoDetails(egoId);
+    });
+    return personalityInfo;
   }
   test() {
-    const unitTestResult = {
-      id: [],
-      index: [],
-      mask: this.#byteMask
-    };
-    for (let i = 0;i < 12; i++) {
-      unitTestResult.index.push(this.#getStartIndexFromSinnerId(i + 1));
-    }
-    for (let i = 0;i < this.#settings.maxBytesLength; i++) {
-      unitTestResult.id.push(this.#getSinnerIdFromByteIndex(i));
-    }
-    Object.entries(unitTestResult).map(([key, value]) => {
+    const e2eTestResult = {};
+    Object.entries(e2eTestResult).map(([key, value]) => {
       console.dir({ [key]: value });
     });
     return true;
   }
 }
-var team_builder_default = TeamBuilder;
 
 // src/team-code-debugger.ts
 (() => {
-  const teamCodeConverter = new team_builder_default;
-  const setting = teamCodeConverter.getSettings();
-  const teamDataStore = [];
-  const standardTeamCode = "H4sIAAAAAAAACnMMdEx3BAInR2cQ5ejq6AmmqSLsaGsLANDKykhgAAAA";
-  const standardTeamBinaryData = teamCodeConverter.debugParse(standardTeamCode);
-  function isDifferent(targetByte, byteIndex) {
-    return targetByte !== standardTeamBinaryData[byteIndex];
-  }
-  function compareBytes(teamData, teamIndex) {
-    if (!teamData.binaryData) {
-      return;
-    }
-    const diffLocationList = [];
-    for (let i = 0;i < teamData.binaryData.length; i++) {
-      const byte = teamData.binaryData[i];
-      if (byte && isDifferent(byte, i)) {
-        diffLocationList.push(i);
-      }
-    }
-    return {
-      teamIndex,
-      binaryData: teamData.binaryData,
-      differences: [...diffLocationList],
-      description: teamData.description
-    };
-  }
-  function getByteCharsFromIndexRange(byteList, indexRange) {
-    return indexRange.map((index) => byteList[index]).map((byte) => String.fromCodePoint(byte ?? 63)).join("");
-  }
-  function getTooltipFromIndexRange(byteList, indexRange) {
-    return [
-      indexRange.map((index) => byteList[index]).map((byte) => utils_default.getBinary(byte ?? 0)).join(" "),
-      `(${indexRange.map((index) => byteList[index]).map((byte) => `'${String.fromCodePoint(byte ?? 63)}'`).join(" ")})`
-    ].join(" ");
-  }
-  function getSpanElementHtml(binaryData, indexRange, differences = [], fieldType = "redundant") {
-    if (indexRange.length === 0 || indexRange[0] === undefined) {
+  const teamCodec = new TeamCodec;
+  const teamInfoStore = [];
+  function getSinnerHtml(sinnerDetails) {
+    if (!sinnerDetails || !sinnerDetails.identity) {
       return;
     }
     const htmlSlices = [];
-    const byteChars = getByteCharsFromIndexRange(binaryData, indexRange);
     const tooltipSlices = [];
-    const isModified = utils_default.hasIntersection(differences, indexRange);
-    const sinnerInfo = teamCodeConverter.getSinnerInfoFromByteIndex(indexRange[0], indexRange.map((index) => binaryData[index]));
-    if (sinnerInfo) {
-      tooltipSlices.push(`${sinnerInfo.name} ${sinnerInfo.nameRaw} (id: ${sinnerInfo.id}, startIndex: ${indexRange[0]})`);
-      if (fieldType === "identity" && sinnerInfo.personality?.id) {
-        tooltipSlices.push("", `${sinnerInfo.personality.title} (${sinnerInfo.personality.desc})`, "");
-      }
-    }
-    if (isModified) {
-      tooltipSlices.push(`${getTooltipFromIndexRange(standardTeamBinaryData, indexRange)} standard`);
-      tooltipSlices.push(`${getTooltipFromIndexRange(binaryData, indexRange)} current`);
-    }
-    const tooltipStr = tooltipSlices.length === 0 ? "" : ` title="${tooltipSlices.join("&#10;")}"`;
-    htmlSlices.push(`<span data-field-type="${fieldType}" data-field-start-index="${indexRange[0]}"
-data-field-bytes="${indexRange.map((index) => binaryData[index])}"
-data-field-modified="${isModified}"${tooltipStr}>${byteChars}</span>`);
+    tooltipSlices.push(`${sinnerDetails.identity.name} ${sinnerDetails.identity.nameRaw} (id: ${sinnerDetails.identity.id})`, "", `${sinnerDetails.identity.title} (${sinnerDetails.identity.desc})`);
+    const tooltipString = tooltipSlices.length === 0 ? "" : ` title="${tooltipSlices.join("&#10;")}"`;
+    htmlSlices.push(`<span data-limbus-sinner="${sinnerDetails.sinnerId}"
+data-sinner-identity="${sinnerDetails.identity.id}"
+data-sinner-egos="${Object.values(sinnerDetails.egos).map((ego) => ego?.id)}"
+data-sinner-order="${sinnerDetails.order}"
+${tooltipString}>${sinnerDetails.identity.name}</span>`);
     return htmlSlices.join("");
   }
-  function renderTeamInfo(teamInfo) {
-    if (!teamInfo) {
+  function renderTeamInfo(teamInfo, newTeamIndex) {
+    const { sinners, description: teamDescription } = teamInfo;
+    if (!sinners) {
       return;
     }
-    const teamHtml = [];
-    for (let i = 0;i < setting.groupCount; i++) {
-      for (let j = 0;j < Math.floor(12 / setting.groupCount); j++) {
-        const startIndex = i * 23 + j * 8;
-        const indexRanges = {
-          identity: Array.from({ length: setting.identityBytesLength }, (_, k) => startIndex + k),
-          ego: Array.from({ length: setting.egoBytesLength }, (_, k) => startIndex + setting.identityBytesLength + k),
-          redundant: Array.from({
-            length: j === 2 ? 7 - setting.identityBytesLength - setting.egoBytesLength : 8 - setting.identityBytesLength - setting.egoBytesLength
-          }, (_, k) => startIndex + setting.identityBytesLength + setting.egoBytesLength + k)
-        };
-        const sinnerHtml = [];
-        sinnerHtml.push(getSpanElementHtml(teamInfo.binaryData, indexRanges.identity, teamInfo.differences, "identity"));
-        sinnerHtml.push(getSpanElementHtml(teamInfo.binaryData, indexRanges.ego, teamInfo.differences, "ego"));
-        sinnerHtml.push(getSpanElementHtml(teamInfo.binaryData, indexRanges.redundant, teamInfo.differences, "redundant"));
-        teamHtml.push(`<code class="sinner" data-sinner-id="${i * 3 + j + 1}">${sinnerHtml.join("")}</code>`);
-      }
-      teamHtml.push(`<code class="divider"> </code>`);
-    }
-    teamHtml.unshift(`<span data-button="copyTeamCode" data-team-index="${teamInfo.teamIndex}"
-title="点击复制 ${teamInfo.teamIndex + 1} 号编队码">${(teamInfo.teamIndex + 1).toString().padStart(2, "0")}</span>&ensp;`);
-    teamHtml.push([
-      `<code data-field-type="end" data-field-start-index="92">`,
-      Array.from({ length: 4 }, (_, i) => String.fromCodePoint(teamInfo.binaryData[92 + i] ?? 63)).join(""),
-      `</code>&ensp;`,
-      teamInfo.description
+    const teamRowHtml = [];
+    teamRowHtml.push([
+      `<div data-limbus-sinner-list="${newTeamIndex}">`,
+      sinners.map((sinnerInfo) => getSinnerHtml(teamCodec.loadSinnerDetails(sinnerInfo))).join(""),
+      "</div>"
     ].join(""));
-    const teamCodeContainer = document.querySelector("#team-code-container");
-    if (!teamCodeContainer) {
+    teamRowHtml.unshift(`<div data-button-usage="copyTeamCode" title="点击复制 ${newTeamIndex + 1} 号队伍编队码">${(newTeamIndex + 1).toString().padStart(2, "0")}</div>`);
+    teamRowHtml.push(["<div data-team-description>", teamDescription, "</div>"].join(""));
+    const teamInfoContainer = document.querySelector("#limbus-team-list");
+    if (!teamInfoContainer) {
       throw new Error("Team code container element not found");
     }
     const teamInfoElement = document.createElement("div");
-    teamInfoElement.classList.add("lc-team");
-    teamInfoElement.dataset.teamIndex = teamInfo.teamIndex.toString();
-    teamInfoElement.innerHTML = teamHtml.join("");
-    teamCodeContainer.append(teamInfoElement);
-  }
-  function getDifferenceDetails(byteList, startIndex) {
-    const standardDataSlice = Array.from(standardTeamBinaryData).slice(startIndex, startIndex + byteList.length);
-    const differenceDetails = {
-      standard: standardDataSlice.map((byte) => utils_default.getBinary(byte)),
-      selected: byteList.map((byte) => utils_default.getBinary(byte)),
-      difference: []
-    };
-    differenceDetails.difference = Array.from({ length: byteList.length }, (_, i) => i).map((i) => byteList[i] - standardDataSlice[i]);
-    return differenceDetails;
+    teamInfoElement.dataset.limbusTeam = newTeamIndex.toString();
+    teamInfoElement.innerHTML = teamRowHtml.join("");
+    teamInfoContainer.append(teamInfoElement);
   }
   function initApp() {
-    const teamCodeContainer = document.querySelector("#team-code-container");
-    if (!teamCodeContainer) {
-      throw new Error("Team code container element not found");
+    const teamInfoContainer = document.querySelector("#limbus-team-list");
+    if (!teamInfoContainer) {
+      throw new Error("Team container element not found");
     }
-    const teamInfoElement = document.createElement("div");
-    teamInfoElement.classList.add("lc-team");
-    teamInfoElement.innerHTML = `00&ensp;<code>${new TextDecoder().decode(standardTeamBinaryData).match(/.{1,23}/g)?.join(" ")}</code>&ensp;默认编队`;
-    teamCodeContainer.prepend(teamInfoElement);
-    const teamCodeParser = document.querySelector("#team-code-parser");
-    if (teamCodeParser) {
-      const inputElement = teamCodeParser.querySelector("div#team-code-parser > input#team-code-input");
-      const buttonElement = teamCodeParser.querySelector("div#team-code-parser > button");
-      if (inputElement && buttonElement) {
-        buttonElement.addEventListener("click", () => {
-          const inputText = inputElement.value;
-          if (!inputText || inputText === "") {
-            return;
-          }
-          const binaryData = teamCodeConverter.debugParse(inputText);
-          if (!binaryData) {
-            return;
-          }
-          const teamInfo = {
-            binaryData,
-            description: new Date().toLocaleTimeString()
-          };
-          teamDataStore.push(teamInfo);
-          renderTeamInfo(compareBytes(teamInfo, teamDataStore.length - 1));
-        });
-      }
+    const importButtonElement = document.querySelector("button#load-team-code");
+    if (importButtonElement) {
+      importButtonElement.addEventListener("click", async () => {
+        const teamCodeInClipboard = await navigator.clipboard.readText();
+        if (!teamCodeInClipboard || teamCodeInClipboard === "") {
+          return;
+        }
+        const sinners = teamCodec.decode(teamCodeInClipboard);
+        if (!sinners || !Array.isArray(sinners) || sinners.length === 0) {
+          alert(`载入剪贴板中的编队码失败，请检查格式是否正确：
+${teamCodeInClipboard}`);
+          return;
+        }
+        const teamInfo = {
+          sinners,
+          description: new Date().toLocaleTimeString()
+        };
+        teamInfoStore.push(teamInfo);
+        renderTeamInfo(teamInfo, teamInfoStore.length - 1);
+        alert("已载入剪贴板中的编队码");
+      });
     }
-    const differenceDisplay = document.querySelector("#difference-display");
-    if (differenceDisplay) {
-      teamCodeContainer.addEventListener("click", (event) => {
+    const detailsDisplay = document.querySelector("[data-sinner-details]");
+    if (detailsDisplay) {
+      teamInfoContainer.addEventListener("click", (event) => {
         const clickedElement = event.target;
-        if (clickedElement.dataset.button === "copyTeamCode") {
-          if (clickedElement.dataset.teamIndex) {
-            const teamIndex = Number.parseInt(clickedElement.dataset.teamIndex);
-            const { binaryData } = teamDataStore[teamIndex] ?? {};
-            let teamCodeBase64 = `检索 ${teamIndex + 1} 编队码失败`;
-            if (binaryData) {
-              teamCodeBase64 = teamCodeConverter.stringify(binaryData) ?? teamCodeBase64;
+        if (clickedElement.dataset.buttonUsage === "copyTeamCode") {
+          if (clickedElement.parentElement?.dataset.limbusTeam) {
+            const teamIndex = Number.parseInt(clickedElement.parentElement.dataset.limbusTeam);
+            const { sinners } = teamInfoStore[teamIndex] ?? {};
+            let teamCodeBase64 = `检索 ${teamIndex + 1} 号队伍编队码失败`;
+            if (sinners) {
+              teamCodeBase64 = teamCodec.encode(sinners) ?? teamCodeBase64;
             }
             navigator.clipboard.writeText(teamCodeBase64);
-            console.log(`已复制 ${teamIndex + 1} 号编队码:`, teamCodeBase64);
+            console.info(`已复制 ${teamIndex + 1} 号队伍编队码:`, teamCodeBase64);
             return;
           }
-        } else if (clickedElement.dataset.fieldModified === "true") {
+        } else if (clickedElement.dataset.limbusSinner) {
           const clickedData = {
-            startIndex: clickedElement.dataset.fieldStartIndex,
-            bytes: clickedElement.dataset.fieldBytes,
-            differentData: clickedElement.dataset.fieldBytes?.split(",").map((byte) => Number.parseInt(byte))
+            sinnerId: clickedElement.dataset.limbusSinner ? Number.parseInt(clickedElement.dataset.limbusSinner) : 0,
+            identityId: clickedElement.dataset.sinnerIdentity ? Number.parseInt(clickedElement.dataset.sinnerIdentity) : 0,
+            order: clickedElement.dataset.sinnerOrder ? Number.parseInt(clickedElement.dataset.sinnerOrder) : 0,
+            egos: clickedElement.dataset.sinnerEgos?.split(",").map((egoId) => egoId ? Number.parseInt(egoId) : undefined)
           };
-          if (!clickedData.differentData) {
+          const sinnerDetails = teamCodec.loadSinnerDetails({
+            sinnerId: clickedData.sinnerId,
+            identityId: clickedData.identityId,
+            order: clickedData.order,
+            egos: {
+              ZAYIN: clickedData.egos?.[0] ?? 0,
+              TETH: clickedData.egos?.[1],
+              HE: clickedData.egos?.[2],
+              WAW: clickedData.egos?.[3],
+              ALEPH: clickedData.egos?.[4]
+            }
+          });
+          if (!sinnerDetails.identity) {
+            console.error({ msg: "sinner not found", sinnerDetails });
             return;
           }
-          const startIndex = Number.parseInt(clickedData.startIndex);
-          const differenceDetails = getDifferenceDetails(clickedData.differentData, startIndex);
           const displayContent = [
-            [
-              differenceDetails.standard.join(" "),
-              differenceDetails.standard.map((binStr) => String.fromCharCode(Number.parseInt(binStr, 2))).join(""),
-              differenceDetails.standard.map((binStr) => Number.parseInt(binStr, 2)).join(","),
-              "默认初始状态"
-            ].join(" "),
-            [
-              `<span class="display-remark">+</span><i>`,
-              differenceDetails.difference.map((num) => num === 0 ? " ".repeat(8) : utils_default.getBinary(num)).join(" "),
-              "</i>    差值 (二进制)"
-            ].join(""),
-            [
-              `<div class="display-hint"><span class="display-remark">+</span><i>`,
-              differenceDetails.difference.map((num) => num === 0 ? " ".repeat(8) : num.toString().padStart(8, " ")).join(" "),
-              "</i>    差值 (十进制)</div>"
-            ].join(""),
-            [
-              `<span class="display-remark">=</span>`,
-              differenceDetails.selected.map((byte, index) => {
-                const standardByte = differenceDetails.standard[index];
-                if (!standardByte) {
-                  return;
-                }
-                const html = [];
-                for (let i = 0;i < standardByte.length; i++) {
-                  if (byte[i] !== standardByte[i]) {
-                    html.push(`<span class="highlight">${byte[i]}</span>`);
-                  } else {
-                    html.push(byte[i]);
-                  }
-                }
-                return html.join("");
-              }).join(" "),
-              " ",
-              clickedData.differentData.map((byte) => String.fromCharCode(byte)).join(""),
-              " ",
-              clickedData.differentData.join(","),
-              " 点击的差异部分"
-            ].join("")
+            `<div data-display-identity style="background-image: url('HoverBorder.png'), url('Tier3.png'), url('identities/${sinnerDetails.identity.id}_normal_info.avif')">`,
+            `<div title="[${sinnerDetails.sinnerId}] ${sinnerDetails.identity.nameRaw}">${sinnerDetails.identity.name}</div>`,
+            `<div title="${sinnerDetails.identity.titleRaw}
+
+[${sinnerDetails.identity.id}] ${sinnerDetails.identity.desc}">`,
+            `${sinnerDetails.identity.title.replaceAll(`
+`, "<br>")}</div>`,
+            `</div>`
           ];
-          const extraInfo = [];
-          const bytes = clickedData.bytes?.split(",").map((byteString) => Number.parseInt(byteString));
-          if (clickedData.startIndex && bytes && bytes.length === 2 && bytes[0]) {
-            const sinnerInfo = teamCodeConverter.getSinnerInfoFromByteIndex(Number.parseInt(clickedData.startIndex), bytes);
-            if (sinnerInfo.personality?.title) {
-              const bin = (num) => {
-                return num.toString(2).padStart(4, "0");
-              };
-              const hex = (num) => {
-                return num.toString(16);
-              };
-              const [left, right] = [bytes[0] >> 4, bytes[0] & 15];
-              if (sinnerInfo.id && sinnerInfo.id % 3 === 0) {
-                extraInfo.push(`${bin(left)}(${hex(left)}) ${bin(right)}(${hex(right)})`, "&emsp;");
-              }
-              extraInfo.push(`[${sinnerInfo.id}]${sinnerInfo.name} - [${sinnerInfo.personality.id}]`, `${sinnerInfo.personality.title.replaceAll(`
-`, " ")}`);
-            }
-          }
-          differenceDisplay.innerHTML = `<pre>${displayContent.join("<br>")}</pre>${extraInfo.join("")}`;
+          const extraInfo = [
+            "<div>",
+            "<div data-display-egos>",
+            ...Object.entries(sinnerDetails.egos).map(([egoLevel, egoDetails]) => egoDetails ? `<div data-display-ego-level="${egoLevel}" data-ego-id="${egoDetails.id}"
+title="<${egoLevel}>
+${egoDetails.nameRaw}
+[${egoDetails.id}] ${egoDetails.desc}">${egoDetails.name}</div>` : ""),
+            "</div>",
+            `<div>(出战顺序: ${sinnerDetails.order})</div>`,
+            "</div>"
+          ];
+          detailsDisplay.innerHTML = `${displayContent.join("")}${extraInfo.join("")}`;
         }
       });
     }
@@ -796,14 +691,14 @@ title="点击复制 ${teamInfo.teamIndex + 1} 号编队码">${(teamInfo.teamInde
   initApp();
   Object.assign(window, {
     debugTeamCode: () => {
-      return teamCodeConverter.test();
+      return teamCodec.test();
     }
   });
   personalities.map((teamCodeSample) => {
-    teamDataStore.push({
-      binaryData: teamCodeConverter.debugParse(teamCodeSample.code),
+    teamInfoStore.push({
+      sinners: teamCodec.decode(teamCodeSample.code),
       description: teamCodeSample.description
     });
   });
-  teamDataStore.map(compareBytes).map(renderTeamInfo);
+  teamInfoStore.map(renderTeamInfo);
 })();
